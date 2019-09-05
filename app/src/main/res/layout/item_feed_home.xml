@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.zach.flicky.utility.Utility"/>
+        <variable name="model" type="com.zach.flicky.domain.database.entity.Feed"/>
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@android:color/white">
+
+        <RelativeLayout
+                android:onClick="@{model::openDetail}"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:id="@+id/image"
+                    android:scaleType="center"
+                    app:loadImage="@{model.media.imageUrl}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/media_item_fg"
+                    android:layout_width="match_parent"
+                    android:gravity="bottom"
+                    android:layout_height="100dp">
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:id="@+id/title"
+                        android:text="@{model.title}"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:setDate="@{model.dateTaken}"
+                        android:textColor="@android:color/white"
+                        android:textSize="8sp"/>
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

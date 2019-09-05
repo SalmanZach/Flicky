@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Flicky</string>
+
+    <string name="tab1">Cats</string>
+    <string name="tab2">Dogs</string>
+    <string name="tab3">Birds</string>
+</resources>
