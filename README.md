@@ -1,11 +1,11 @@
 # Flicky.
 
+![ic_launcher_round](https://user-images.githubusercontent.com/11782272/64367188-54704a00-d035-11e9-8be2-19fa69d3ae44.png)
 
 
-  Springy is About Motion and Animation on Android platform, you can make smooth and clean property animations
-### .
+  Flicky app demonstrate android architecture components with liveData, Room, ViewModel, coroutines and kodein (DI). 
 
-![media player](https://user-images.githubusercontent.com/11782272/27817251-c255cff8-60ad-11e7-8e39-4e1c5eda1865.gif)    
+![Screenshot_20190905-233052](https://user-images.githubusercontent.com/11782272/64367254-5803d100-d035-11e9-93e0-a6de75941c2e.png)
 
 
 
