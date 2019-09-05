@@ -5,8 +5,7 @@
  ## Flicky app demonstrate android architecture components with liveData, Room, ViewModel, coroutines and kodein (DI). 
 
 
-![Screenshot_20190905-233052](https://user-images.githubusercontent.com/11782272/64367799-833af000-d036-11e9-9bdd-ce900db8b433.png)
-
+![Screenshot_20190905-233052](https://user-images.githubusercontent.com/11782272/64367923-c5643180-d036-11e9-8258-2aad667ea777.png)
 
 License
 -------
