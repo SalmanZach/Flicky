@@ -12,7 +12,6 @@ import com.zach.flicky.domain.database.entity.Feed
 interface FlickerRepository {
 
     suspend fun loadFeeds(tag:String)
-
     suspend fun getFeedByTag(tag:String): LiveData<List<Feed>>
 
 }

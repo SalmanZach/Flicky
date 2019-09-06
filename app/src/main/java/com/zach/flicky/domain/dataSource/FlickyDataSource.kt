@@ -11,7 +11,6 @@ import com.zach.flicky.domain.database.entity.Feed
 interface FlickyDataSource {
 
     val downloadedFeeds: LiveData<List<Feed>>
-
     suspend fun fetchFeedsData(tag:String)
 
 

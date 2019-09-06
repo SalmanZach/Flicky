@@ -18,6 +18,10 @@ import kotlinx.coroutines.launch
 class FeedsViewModel(private val repository: FlickerRepository) : ViewModel(){
 
 
+    /*
+    *  getting feed data from data base by the tag. form flicky repository.
+    * */
+
     fun getFeedByTagAsync(tag: String): Deferred<LiveData<List<Feed>>> {
         val feeds by lazyDeferred {
             repository.getFeedByTag(tag)
@@ -25,6 +29,9 @@ class FeedsViewModel(private val repository: FlickerRepository) : ViewModel(){
         return feeds
     }
 
+
+    /*
+    * load data every time when user opens the app. this will hit the api and save the data into data base by tags*/
     fun loadFeedByTag(tag: String) {
         GlobalScope.launch {
             repository.loadFeeds(tag)

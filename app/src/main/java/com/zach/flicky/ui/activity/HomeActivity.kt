@@ -2,11 +2,8 @@ package com.zach.flicky.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import com.zach.flicky.R
-import com.zach.flicky.adapter.HomeFeedAdapter
 import com.zach.flicky.adapter.TabsAdapter
 import com.zach.flicky.databinding.ActivityHomeBinding
 import com.zach.flicky.domain.Constants
@@ -15,7 +12,6 @@ import com.zach.flicky.domain.core.BaseActivity
 import com.zach.flicky.ui.fragment.ListFragment
 import com.zach.flicky.utility.Utility
 import com.zach.flicky.viewModel.FeedsViewModel
-import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.generic.instance
@@ -36,11 +32,11 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(),KodeinAware {
 
 
     override fun onActivityReady(instance: Bundle?, binding: ActivityHomeBinding) {
+
+        // make an instance of viewModel so that child can access
         viewModel = ViewModelProviders.of(this@HomeActivity, viewModelFactory)
             .get(FeedsViewModel::class.java)
-        viewModel.loadFeedByTag(Constants.TAG_DOGS)
-        viewModel.loadFeedByTag(Constants.TAG_CATS)
-        viewModel.loadFeedByTag(Constants.TAG_BIRDS)
+
         val adapter = TabsAdapter(supportFragmentManager)
         adapter.addFragment(
             ListFragment.getInstance(Constants.TAG_CATS),
@@ -56,7 +52,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(),KodeinAware {
         )
 
         binding.viewPager.adapter = adapter
-        binding.viewPager.offscreenPageLimit = 3
         binding.tabLayout.setupWithViewPager(binding.viewPager)
         Utility.showMessageIfNoNetwork(binding.container)
 

@@ -9,7 +9,6 @@ import com.zach.flicky.R
 import com.zach.flicky.adapter.HomeFeedAdapter
 import com.zach.flicky.databinding.FragmentListBinding
 import com.zach.flicky.domain.core.BaseFragment
-import com.zach.flicky.utility.Utility
 import com.zach.flicky.utility.getViewModel
 import com.zach.flicky.viewModel.FeedsViewModel
 import kotlinx.coroutines.launch
@@ -32,6 +31,8 @@ class ListFragment : BaseFragment<FragmentListBinding>() {
 
     override fun onFragmentReady(instanceState: Bundle?, binding: FragmentListBinding) {
         mBinding = binding
+
+        // initializing viewModel from activity scope provide by view model provider
         activity?.let {
             viewModel = it.getViewModel()
         }
@@ -43,10 +44,10 @@ class ListFragment : BaseFragment<FragmentListBinding>() {
         binding.recyclerView.adapter = adapter
 
 
-
         arguments?.let {
             val tag = it.getString(TAG)
             tag?.let {tag->
+                viewModel.loadFeedByTag(tag)
                 fillData(tag)
             }
         }
