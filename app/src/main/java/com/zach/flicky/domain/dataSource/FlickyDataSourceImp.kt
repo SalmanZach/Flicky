@@ -2,9 +2,8 @@ package com.zach.flicky.domain.dataSource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.zach.flicky.domain.Constants
+import com.zach.flicky.domain.database.entity.FeedEntry
 import com.zach.flicky.domain.network.FlickyService
-import com.zach.flicky.domain.database.entity.Feed
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -17,8 +16,8 @@ import timber.log.Timber
 class FlickyDataSourceImp(private val flickyService: FlickyService) :FlickyDataSource{
 
 
-    private val _downloadedFeeds = MediatorLiveData<List<Feed>>()
-    override val downloadedFeeds: LiveData<List<Feed>>
+    private val _downloadedFeeds = MediatorLiveData<FeedEntry>()
+    override val downloadedFeeds: LiveData<FeedEntry>
         get() = _downloadedFeeds
 
     override suspend fun fetchFeedsData(tag:String) {
@@ -26,10 +25,12 @@ class FlickyDataSourceImp(private val flickyService: FlickyService) :FlickyDataS
             try {
                 val fetchedData = flickyService.getFeedsAsync(tag,1,"json").await()
 
+                val feedEntry = FeedEntry(tag = tag)
+                feedEntry.feeds = fetchedData.feeds
                  fetchedData.feeds.forEach {
-                     it.tag = tag
+                     feedEntry.dateAndTime = it.dateTaken
                  }
-                _downloadedFeeds.postValue(fetchedData.feeds)
+                _downloadedFeeds.postValue(feedEntry)
             } catch (e: Exception) {
                 Timber.d(e.message)
             }

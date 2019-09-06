@@ -60,7 +60,7 @@ class ListFragment : BaseFragment<FragmentListBinding>() {
         feeds.observe(this@ListFragment, Observer {
             if (it == null)return@Observer
             mBinding.progress.visibility = View.GONE
-            adapter.submitList(it)
+            adapter.submitList(it.feeds)
 
         })
     }

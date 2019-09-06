@@ -4,15 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.zach.flicky.domain.database.doa.FeedDao
-import com.zach.flicky.domain.database.entity.Feed
+import com.zach.flicky.domain.database.entity.FeedEntry
 
 
 /**
  * Created by Salman Zach on 5/8/19.
  * Email - zach.salmansaifi@gmail.com
  */
-@Database(entities = [Feed::class],version = 1)
+@Database(entities = [FeedEntry::class], version = 1)
+@TypeConverters(FeedConverter::class)
 abstract class FlickyDatabase : RoomDatabase() {
 
     abstract fun feedDao(): FeedDao

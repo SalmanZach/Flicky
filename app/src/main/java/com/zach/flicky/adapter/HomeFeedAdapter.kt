@@ -3,7 +3,7 @@ package com.zach.flicky.adapter
 import androidx.recyclerview.widget.DiffUtil
 import com.zach.flicky.R
 import com.zach.flicky.domain.core.BaseRecyclerAdapter
-import com.zach.flicky.domain.database.entity.Feed
+import com.zach.flicky.domain.network.response.Feed
 
 
 /**
@@ -16,14 +16,13 @@ class HomeFeedAdapter : BaseRecyclerAdapter<Feed>(Callback()) {
     class Callback : DiffUtil.ItemCallback<Feed>() {
 
         override fun areItemsTheSame(oldItem: Feed, newItem: Feed): Boolean {
-            return oldItem.authorId.equals(newItem.authorId, ignoreCase = true)
+            return oldItem.dateTaken.equals(newItem.dateTaken, ignoreCase = true)
         }
 
         override fun areContentsTheSame(oldItem: Feed, newItem: Feed): Boolean {
-            return oldItem.authorId == newItem.authorId &&
-                    oldItem.title == newItem.title &&
+            return oldItem.title == newItem.title &&
                     oldItem.dateTaken == newItem.dateTaken &&
-                    oldItem.published == newItem.published
+                    oldItem.media.imageUrl == newItem.media.imageUrl
 
         }
 

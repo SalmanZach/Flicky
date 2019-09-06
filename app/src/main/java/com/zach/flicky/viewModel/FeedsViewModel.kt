@@ -2,13 +2,12 @@ package com.zach.flicky.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.zach.flicky.domain.database.entity.Feed
+import com.zach.flicky.domain.database.entity.FeedEntry
 import com.zach.flicky.domain.repository.FlickerRepository
 import com.zach.flicky.utility.lazyDeferred
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
 
 
 /**
@@ -22,7 +21,7 @@ class FeedsViewModel(private val repository: FlickerRepository) : ViewModel(){
     *  getting feed data from data base by the tag. form flicky repository.
     * */
 
-    fun getFeedByTagAsync(tag: String): Deferred<LiveData<List<Feed>>> {
+    fun getFeedByTagAsync(tag: String): Deferred<LiveData<FeedEntry>> {
         val feeds by lazyDeferred {
             repository.getFeedByTag(tag)
         }

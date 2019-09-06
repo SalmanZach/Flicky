@@ -1,8 +1,7 @@
 package com.zach.flicky.domain.repository
 
 import androidx.lifecycle.LiveData
-import com.zach.flicky.domain.database.entity.Feed
-
+import com.zach.flicky.domain.database.entity.FeedEntry
 
 
 /**
@@ -12,6 +11,6 @@ import com.zach.flicky.domain.database.entity.Feed
 interface FlickerRepository {
 
     suspend fun loadFeeds(tag:String)
-    suspend fun getFeedByTag(tag:String): LiveData<List<Feed>>
+    suspend fun getFeedByTag(tag: String): LiveData<FeedEntry>
 
 }

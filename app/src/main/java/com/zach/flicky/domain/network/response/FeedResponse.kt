@@ -2,7 +2,6 @@ package com.zach.flicky.domain.network.response
 
 
 import com.google.gson.annotations.SerializedName
-import com.zach.flicky.domain.database.entity.Feed
 
 
 /**

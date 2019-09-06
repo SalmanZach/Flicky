@@ -3,7 +3,7 @@ package com.zach.flicky.domain.repository
 import androidx.lifecycle.LiveData
 import com.zach.flicky.domain.dataSource.FlickyDataSource
 import com.zach.flicky.domain.database.doa.FeedDao
-import com.zach.flicky.domain.database.entity.Feed
+import com.zach.flicky.domain.database.entity.FeedEntry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -33,16 +33,17 @@ class FlickyRepositoryImp (
          dataSource.fetchFeedsData(tag)
     }
 
-    override suspend fun getFeedByTag(tag:String): LiveData<List<Feed>> {
+    override suspend fun getFeedByTag(tag: String): LiveData<FeedEntry> {
         return withContext(Dispatchers.IO) {
             return@withContext feedDao.getFeedByTag(tag)
         }
     }
 
 
-    private fun persistFetchedFeed(feeds:List<Feed>){
+    private fun persistFetchedFeed(feeds: FeedEntry) {
         GlobalScope.launch(Dispatchers.IO) {
-             feedDao.insertFeeds(feeds)
+            feedDao.deleteAll(feeds.tag)
+            feedDao.insertFeeds(feeds)
         }
     }
 

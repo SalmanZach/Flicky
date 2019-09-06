@@ -4,7 +4,7 @@
 
     <data>
         <import type="com.zach.flicky.utility.Utility"/>
-        <variable name="model" type="com.zach.flicky.domain.database.entity.Feed"/>
+        <variable name="model" type="com.zach.flicky.domain.network.response.Feed"/>
     </data>
 
 

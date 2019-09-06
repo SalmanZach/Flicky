@@ -1,7 +1,7 @@
 package com.zach.flicky.domain.dataSource
 
 import androidx.lifecycle.LiveData
-import com.zach.flicky.domain.database.entity.Feed
+import com.zach.flicky.domain.database.entity.FeedEntry
 
 
 /**
@@ -10,7 +10,7 @@ import com.zach.flicky.domain.database.entity.Feed
  */
 interface FlickyDataSource {
 
-    val downloadedFeeds: LiveData<List<Feed>>
+    val downloadedFeeds: LiveData<FeedEntry>
     suspend fun fetchFeedsData(tag:String)
 
 

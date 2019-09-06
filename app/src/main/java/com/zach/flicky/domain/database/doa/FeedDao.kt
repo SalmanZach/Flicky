@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.zach.flicky.domain.database.entity.Feed
+import com.zach.flicky.domain.database.entity.FeedEntry
 
 /**
  * Created by Salman Zach on 5/8/19.
@@ -14,11 +14,11 @@ import com.zach.flicky.domain.database.entity.Feed
 @Dao
 interface FeedDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertFeeds(feed: List<Feed>): List<Long>
+    fun insertFeeds(feed: FeedEntry): Long
 
-    @Query("SELECT * FROM Feed WHERE tag =:tag")
-    fun getFeedByTag(tag:String): LiveData<List<Feed>>
+    @Query("SELECT * FROM FeedEntry WHERE tag =:tag")
+    fun getFeedByTag(tag: String): LiveData<FeedEntry>
 
-    @Query("DELETE  FROM Feed WHERE tag =:tag")
+    @Query("DELETE FROM FeedEntry WHERE tag =:tag")
     fun deleteAll(tag: String)
 }
