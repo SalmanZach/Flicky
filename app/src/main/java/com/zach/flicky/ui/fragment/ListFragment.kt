@@ -2,6 +2,7 @@ package com.zach.flicky.ui.fragment
 
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -61,7 +62,9 @@ class ListFragment : BaseFragment<FragmentListBinding>() {
             if (it == null)return@Observer
             mBinding.progress.visibility = View.GONE
             adapter.submitList(it.feeds)
-            mBinding.recyclerView.smoothScrollToPosition(0)
+            Handler().post {
+                mBinding.recyclerView.smoothScrollToPosition(0)
+            }
 
         })
 
