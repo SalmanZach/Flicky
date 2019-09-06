@@ -61,8 +61,10 @@ class ListFragment : BaseFragment<FragmentListBinding>() {
             if (it == null)return@Observer
             mBinding.progress.visibility = View.GONE
             adapter.submitList(it.feeds)
+            mBinding.recyclerView.smoothScrollToPosition(0)
 
         })
+
     }
 
 
