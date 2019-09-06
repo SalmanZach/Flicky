@@ -25,7 +25,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
              intent.extras?.let {bundle->
                  val imageUrl = bundle.getString(IMAGE)
                  imageUrl?.let {
-                     ImageLoader.loadImage(binding.image,it)
+                     ImageLoader.loadLargeImage(binding.image, it)
                  }
                  binding.title.text = bundle.getString(TITLE)
                  binding.date.text = Utility.getFormattedDate(bundle.getString(DATE))
