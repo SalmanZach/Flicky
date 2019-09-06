@@ -26,7 +26,9 @@ data class Feed(
     @Embedded(prefix = "media_")
     var media: Media = Media(),
     @SerializedName("title")
-    var title: String = ""
+    var title: String = "",
+    @SerializedName("link")
+    var link: String = ""
 ){
     fun openDetail(view:View){
         val intent = Intent(view.context, DetailActivity::class.java)

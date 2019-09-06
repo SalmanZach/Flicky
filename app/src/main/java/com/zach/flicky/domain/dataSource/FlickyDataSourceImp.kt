@@ -23,12 +23,12 @@ class FlickyDataSourceImp(private val flickyService: FlickyService) :FlickyDataS
     override suspend fun fetchFeedsData(tag:String) {
         withContext(Dispatchers.IO) {
             try {
-                val fetchedData = flickyService.getFeedsAsync(tag,1,"json").await()
+                val fetchedData = flickyService.getFeedsAsync(tag, 1, 100, "json").await()
 
                 val feedEntry = FeedEntry(tag = tag)
                 feedEntry.feeds = fetchedData.feeds
                  fetchedData.feeds.forEach {
-                     feedEntry.dateAndTime = it.dateTaken
+                     feedEntry.link = it.link
                  }
                 _downloadedFeeds.postValue(feedEntry)
             } catch (e: Exception) {

@@ -17,6 +17,7 @@ interface FlickyService {
     fun getFeedsAsync(
         @Query("tags") tag:String,
         @Query("nojsoncallback") nojsoncallback:Int,
+        @Query("per_page") itemCount: Int,
         @Query("format") format:String
                       ): Deferred<FeedResponse>
 
