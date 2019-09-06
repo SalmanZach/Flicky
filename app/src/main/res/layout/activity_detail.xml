@@ -7,10 +7,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ImageView
+    <com.jsibbold.zoomage.ZoomageView
             android:id="@+id/image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            app:zoomage_animateOnReset="true"
+            app:zoomage_autoCenter="true"
+            app:zoomage_autoResetMode="UNDER"
+            app:zoomage_maxScale="8"
+            app:zoomage_minScale="1.0"
+            app:zoomage_restrictBounds="false"
+            app:zoomage_translatable="true"
+            app:zoomage_zoomable="true"/>
 
     <LinearLayout
             android:orientation="vertical"
